@@ -1,0 +1,8 @@
+*.o
+*.config
+*.creator*
+*.files
+*.includes
+dwmstatus
+
+
