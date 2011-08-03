@@ -9,6 +9,8 @@
 #include "utility.hpp"
 
 
+unsigned int const sleep_val= 1;
+
 static char const* net_rx_f = "/sys/class/net/wlan0/statistics/rx_bytes";
 static char const* net_tx_f = "/sys/class/net/wlan0/statistics/tx_bytes";
 
@@ -23,7 +25,7 @@ typedef std::tuple<unsigned long, unsigned long> net_pack_t;
 void
 get_time(std::string& buf)
 {
-    static char rb[25];
+    static char rb[20];
     static time_t rawtime;
 
     ::time(&rawtime);
@@ -94,9 +96,7 @@ main(void)
 
     std::string status_buf;
     std::string time_buf;
-    time_buf.reserve(30);
-
-    unsigned int sleep_val = 1;
+    time_buf.reserve(20);
 
     for (;; ::sleep(sleep_val))
     {

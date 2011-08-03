@@ -28,11 +28,11 @@ void format(std::string& buf, char const* s)
 }
 
 
-template<typename T, typename... Args> // note the "..."
-void format(std::string& buf, const char* s, T value, Args... args)
+template<typename T, typename... Args>
+void format(std::string& buf, char const* s, T value, Args... args)
 {
     while (s && *s) {
-        if (*s=='%' && *++s!='%') {
+        if (*s == '%' && *++s != '%') {
             lex_cast(buf, value);
             return format(buf, ++s, args...);
         }
